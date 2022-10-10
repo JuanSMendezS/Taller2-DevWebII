@@ -7,7 +7,7 @@ const Api = () => {
     const obtenerPersonajes = async () => {
 
         try {            
-            const res = await fetch(`https://randomuser.me/api/?page=${paginacion}&results=20&seed=foobar`)
+            const res = await fetch(`https://randomuser.me/api/?page=${paginacion}&results=20`)
             const { results } = await res.json();
             setPersonajes(results)
         } catch (error) {
@@ -31,10 +31,10 @@ const Api = () => {
             <button onClick={siguientePagina}>Siguiente</button>
             <button onClick={retornarPagina}>Atrás</button>
             {
-                personajes.map(({ name, picture, gender, email }) => (
+                personajes.map(({id, name, picture, gender, email }) => (
                     <div id='contenedor'>
-                        <h4>{name.first} - {email}</h4>
-                        <img src={picture.medium} alt={name.first} />
+                        <h4> {id.value} - {name.first} - {email} </h4>
+                        <img src={picture.large} alt={name.first} />
                         <h5>{gender}</h5>                        
                     </div>
                 ))
