@@ -1,2 +1,4 @@
 Link Netlify
 https://incandescent-sfogliatella-392e76.netlify.app/
+Repositorio
+https://github.com/JuanSMendezS/Taller2-DevWebII

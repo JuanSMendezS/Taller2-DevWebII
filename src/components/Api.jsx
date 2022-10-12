@@ -1,15 +1,14 @@
 import React from 'react'
 
 const Api = () => {
-    const [personajes, setPersonajes] = React.useState([])
+    const [usuarios, setUsuarios] = React.useState([])
     const [paginacion, setPaginacion] = React.useState(1)
 
-    const obtenerPersonajes = async () => {
-
+    const obtenerUsuarios = async () => {
         try {
             const res = await fetch(`https://randomuser.me/api/?page=${paginacion}&results=20`)
             const { results } = await res.json();
-            setPersonajes(results)
+            setUsuarios(results)
         } catch (error) {
             console.log(error)
         }
@@ -17,28 +16,28 @@ const Api = () => {
 
     const siguientePagina = async () => {
         await setPaginacion(paginacion + 1);
-        obtenerPersonajes();
+        obtenerUsuarios();
     }
 
     const retornarPagina = async () => {
         await setPaginacion(paginacion - 1);
-        obtenerPersonajes();
+        obtenerUsuarios();
     }
     return (
         <div class="container text-center">
             <div class="row align-items-start">
                 <div class='col text-center'>
                     <nav aria-label="Page navigation example">
-                        <ul class="pagination justify-content-center">
+                        <ul class="pagination justify-content-center">                            
                             <li class="page-item"> <button class='page-link' onClick={retornarPagina}>Atrás</button> </li>
-                            <li class="page-item"> <button class='page-link' onClick={obtenerPersonajes}>Acción</button> </li>
+                            <li class="page-item"> <button class='page-link' onClick={obtenerUsuarios}>Traer Usuarios</button> </li>
                             <li class="page-item"> <button class='page-link' onClick={siguientePagina}>Siguiente</button> </li>
                         </ul>
                     </nav>
                 </div>
 
                 {
-                    personajes.map(({ id, name, picture, gender, email }) => (
+                    usuarios.map(({ id, name, picture, gender, email }) => (
                         <div class="container text-center">
                             <div class='row align-items-center'>
                                 <div class='col'>
